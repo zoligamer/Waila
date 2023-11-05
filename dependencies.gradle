@@ -1,7 +1,0 @@
-// Add your dependencies here
-
-dependencies {
-    implementation('com.github.GTNewHorizons:NotEnoughItems:2.4.5-GTNH:dev')
-
-    shadowImplementation('au.com.bytecode:opencsv:2.4')
-}
