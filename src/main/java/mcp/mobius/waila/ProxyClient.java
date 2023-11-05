@@ -6,8 +6,8 @@ import mcp.mobius.waila.handlers.HUDHandlerExternal;
 import mcp.mobius.waila.handlers.HUDHandlerWaila;
 import mcp.mobius.waila.handlers.SummaryProviderDefault;
 import mcp.mobius.waila.server.ProxyServer;
-import net.fabricmc.vanilla.api.API;
-import net.fabricmc.vanilla.api.ItemInfo;
+import net.fabricmc.waila.api.API;
+import net.fabricmc.waila.api.ItemInfo;
 import net.minecraft.src.Item;
 
 public class ProxyClient extends ProxyServer {

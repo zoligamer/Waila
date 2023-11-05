@@ -1,14 +1,14 @@
 package mcp.mobius.waila.handlers;
 
-import btw.community.vanilla.VanillaAddon;
-import net.fabricmc.vanilla.api.ItemInfo;
+import btw.community.waila.WailaAddon;
+import net.fabricmc.waila.api.ItemInfo;
 import net.minecraft.src.World;
 import net.minecraft.src.MovingObjectPosition;
 
 import java.util.List;
 
 import mcp.mobius.waila.addons.ConfigHandler;
-import net.fabricmc.vanilla.api.IHighlightHandler;
+import net.fabricmc.waila.api.IHighlightHandler;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 
@@ -20,7 +20,7 @@ public class HUDHandlerWaila implements IHighlightHandler {
 
     public List<String> handleTextData(ItemStack itemStack, World world, EntityPlayer player, MovingObjectPosition mop, List<String> currenttip, ItemInfo.Layout layout) {
         if (layout == ItemInfo.Layout.FOOTER) {
-            String modName = VanillaAddon.instance.getModName(itemStack);
+            String modName = WailaAddon.instance.getModName(itemStack);
             if (modName != null && !modName.equals(""))
                 currenttip.add("§9§o" + modName);
         } else if (layout == ItemInfo.Layout.HEADER && ConfigHandler.instance().getConfig("waila.showmetadata", false)) {

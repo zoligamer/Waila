@@ -1,7 +1,7 @@
 package mcp.mobius.waila.addons;
 
 import au.com.bytecode.opencsv.CSVReader;
-import btw.community.vanilla.VanillaAddon;
+import btw.community.waila.WailaAddon;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import mcp.mobius.waila.api.IWailaSummaryProvider;
@@ -223,7 +223,7 @@ public class ExternalModulesHandler implements IWailaRegistrar {
         try {
             docData = readFileAsString(filename);
         } catch (IOException e) {
-            VanillaAddon.ModLogger("Error while accessing file %s : %s");
+            WailaAddon.ModLogger("Error while accessing file %s : %s");
 
             return;
         }
@@ -243,7 +243,7 @@ public class ExternalModulesHandler implements IWailaRegistrar {
                 nentries++;
             }
         }
-        VanillaAddon.ModLogger("Registered %s entries from %s");
+        WailaAddon.ModLogger("Registered %s entries from %s");
     }
 
     public boolean hasDocTextModID(String modid) {

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "vanilla",
+  "id": "waila",
   "version": "${version}",
 
-  "name": "Vanilla",
-  "description": "BTW Vanilla Mod",
+  "name": "Waila",
+  "description": "BTW Waila Mod",
   "authors": [
     "limingzxc"
   ],
@@ -24,7 +24,7 @@
     ]
   },
   "mixins": [
-    "vanilla.mixins.json"
+    "waila.mixins.json"
   ],
 
   "depends": {

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
-import btw.community.vanilla.VanillaAddon;
+import btw.community.waila.WailaAddon;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 // import net.minecraftforge.common.Property;
 
@@ -65,10 +65,10 @@ public class ConfigHandler implements IWailaConfigHandler {
     public boolean getConfig(String key, boolean defvalue) {
         // mod_Waila.instance.config.load();
 
-        if (this.serverconfigs.contains(key) && !VanillaAddon.instance.serverPresent) {
+        if (this.serverconfigs.contains(key) && !WailaAddon.instance.serverPresent) {
             return false;
         }
-        // Property prop = VanillaAddon.instance.config.get("general", key, defvalue);
+        // Property prop = WailaAddon.instance.config.get("general", key, defvalue);
         // return prop.getBoolean(defvalue);
         return true;
     }

@@ -2,7 +2,7 @@ package mcp.mobius.waila.handlers;
 
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaSummaryProvider;
-import net.fabricmc.vanilla.api.IShearable;
+import net.fabricmc.waila.api.IShearable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.*;
 

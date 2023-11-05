@@ -1,6 +1,6 @@
 package mcp.mobius.waila.handlers;
 
-import btw.community.vanilla.VanillaAddon;
+import btw.community.waila.WailaAddon;
 import net.minecraft.src.GuiContainer;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 import net.minecraft.src.ItemStack;
 
 public class TooltipHandlerWaila {
-    private final VanillaAddon waila = VanillaAddon.instance;
+    private final WailaAddon waila = WailaAddon.instance;
 
 
     public List<String> handleTooltipFirst(GuiContainer gui, int mousex, int mousey, List<String> currenttip) {

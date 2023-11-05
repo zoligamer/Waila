@@ -1,6 +1,6 @@
 package mcp.mobius.waila.gui;
 
-import net.fabricmc.vanilla.api.ItemInfo;
+import net.fabricmc.waila.api.ItemInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.*;
 import org.lwjgl.opengl.GL11;

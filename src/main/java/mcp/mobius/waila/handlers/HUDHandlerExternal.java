@@ -5,8 +5,8 @@ import mcp.mobius.waila.addons.ConfigHandler;
 import mcp.mobius.waila.addons.ExternalModulesHandler;
 import mcp.mobius.waila.api.IWailaBlock;
 import mcp.mobius.waila.api.IWailaDataProvider;
-import net.fabricmc.vanilla.api.IHighlightHandler;
-import net.fabricmc.vanilla.api.ItemInfo;
+import net.fabricmc.waila.api.IHighlightHandler;
+import net.fabricmc.waila.api.ItemInfo;
 import net.minecraft.src.*;
 
 import java.util.List;
@@ -48,7 +48,7 @@ public class HUDHandlerExternal implements IHighlightHandler {
         Block block = accessor.getBlock();
         int blockID = accessor.getBlockID();
 
-//     if (accessor.getTileEntity() != null && VanillaAddon.instance.serverPresent && System.currentTimeMillis() - accessor.timeLastUpdate >= 250L) {
+//     if (accessor.getTileEntity() != null && WailaAddon.instance.serverPresent && System.currentTimeMillis() - accessor.timeLastUpdate >= 250L) {
 //       accessor.timeLastUpdate = System.currentTimeMillis();
 //       PacketDispatcher.sendPacketToServer(Packet0x01TERequest.create(world, mop));
 //     }
