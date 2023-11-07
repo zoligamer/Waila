@@ -1,24 +1,28 @@
 package mcp.mobius.waila.addons.vanillamc;
 
 import btw.block.BTWBlocks;
+import btw.block.blocks.CropsBlock;
 import mcp.mobius.waila.addons.ExternalModulesHandler;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
-import net.minecraft.src.Block;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntityMobSpawner;
+import net.minecraft.src.*;
 
 import java.util.List;
 
 public class HUDHandlerVanilla implements IWailaDataProvider {
     static int mobSpawnerID = Block.mobSpawner.blockID;
-    static int cropsID = Block.crops.blockID;
+    static int wheatCropID = BTWBlocks.wheatCrop.blockID;
     static int melonStemID = Block.melonStem.blockID;
     static int pumpkinStemID = Block.pumpkinStem.blockID;
-    static int carrotID = Block.carrot.blockID;
+    static int carrotCropID = BTWBlocks.carrotCrop.blockID;
     static int potatoID = Block.potato.blockID;
     static int hempCropID = BTWBlocks.hempCrop.blockID;
+    static int oakSaplingID = BTWBlocks.oakSapling.blockID;
+    static int spruceSaplingID = BTWBlocks.spruceSapling.blockID;
+    static int birchSaplingID = BTWBlocks.birchSapling.blockID;
+    static int jungleSaplingID = BTWBlocks.jungleSapling.blockID;
+    static int netherStalkID = Block.netherStalk.blockID;
     static int leverID = Block.lever.blockID;
     static int repeaterIdle = Block.redstoneRepeaterIdle.blockID;
     static int repeaterActv = Block.redstoneRepeaterActive.blockID;
@@ -41,9 +45,15 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         int blockID = accessor.getBlockID();
 
-        if (config.getConfig("vanilla.growthvalue") && (
-                blockID == cropsID || blockID == melonStemID || blockID == pumpkinStemID || blockID == carrotID || blockID == potatoID || blockID == hempCropID)) {
-            float growthValue = accessor.getMetadata() / 7.0F * 100.0F;
+        if (config.getConfig("vanilla.growthvalue") &&
+                (Block.blocksList[blockID] instanceof CropsBlock ||
+                        Block.blocksList[blockID] instanceof BlockCrops ||
+                        Block.blocksList[blockID] instanceof BlockStem ||
+                        blockID == netherStalkID)) {
+
+            int metadata = accessor.getMetadata();
+            float growthValue = blockID == netherStalkID? metadata / 3.0F * 100F: (metadata & 7) / 7.0F * 100.0F;
+
             if (growthValue != 100.0D) {
                 currenttip.add(String.format("Growth : %.0f %%", growthValue));
             } else {
@@ -101,12 +111,19 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
         ExternalModulesHandler.instance().addConfig("VanillaMC", "vanilla.redstone", "Redstone power");
 
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), mobSpawnerID);
-        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), cropsID);
+        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), wheatCropID);
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), melonStemID);
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), pumpkinStemID);
-        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), carrotID);
+        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), carrotCropID);
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), potatoID);
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), hempCropID);
+        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), netherStalkID);
+
+        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), oakSaplingID);
+        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), spruceSaplingID);
+        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), birchSaplingID);
+        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), jungleSaplingID);
+
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), leverID);
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), repeaterIdle);
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), repeaterActv);

@@ -5,6 +5,8 @@ import btw.BTWAddon;
 import mcp.mobius.waila.ProxyClient;
 import net.minecraft.src.ItemStack;
 
+import java.util.Objects;
+
 public class WailaAddon extends BTWAddon {
 
     public static WailaAddon instance;
@@ -14,7 +16,7 @@ public class WailaAddon extends BTWAddon {
     public static ProxyClient proxy;
 
     private WailaAddon() {
-        super("Waila", "beta 1.0.0", "Ex");
+        super("Waila", "1.0.0 beta", "Ex");
     }
 
     @Override
@@ -29,8 +31,11 @@ public class WailaAddon extends BTWAddon {
     }
 
     public String getModName(ItemStack itemStack) {
-        if(itemStack != null)
-            return itemStack.getItem().getItemDisplayName(itemStack);
+        if(itemStack != null) {
+            String name = itemStack.getItem().getItemDisplayName(itemStack);
+            if(Objects.equals(name, "")) name = itemStack.getItemName();
+            return name;
+        }
         else return "BTW";
     }
 
