@@ -6,7 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "GuiAchievementMixin"
+    "GuiAchievementMixin",
+    "PlayerControllerMPMixin"
   ],
   "injectors": {
     "defaultRequire": 1

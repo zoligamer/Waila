@@ -57,7 +57,8 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
             if (growthValue != 100.0D) {
                 currenttip.add(String.format("Growth : %.0f %%", growthValue));
             } else {
-                currenttip.add("Growth : Mature");
+                if(blockID == wheatCropID || blockID == hempCropID) currenttip.add("Growth : Upward");
+                else currenttip.add("Growth : Mature");
             }
             return currenttip;
         }

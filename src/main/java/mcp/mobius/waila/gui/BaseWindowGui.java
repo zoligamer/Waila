@@ -56,9 +56,6 @@ public class BaseWindowGui extends Gui {
 
             info.add(0, item.getItemDisplayName(new ItemStack(item)));
         }
-        if (info.size() != 0) {
-            info.remove(info.size() - 1);
-        }
 
         if (info.size() == 0 || theGame.isGamePaused || theGame.thePlayer.isDead ||
                 theGame.thePlayer.openContainer != theGame.thePlayer.inventoryContainer ||
@@ -76,6 +73,13 @@ public class BaseWindowGui extends Gui {
         this.theGame.renderEngine.bindTexture("/achievement/bg.png");
         GL11.glDisable(GL11.GL_LIGHTING);
         this.drawTexturedModalRect(var5, var6, 96, 202, 160, 32);
+
+        int progress = (int)(Float.parseFloat(info.get(2)) * 100F);
+
+        drawHorizontalLine(var5 + 10, var5 + 100, var6 + 30, 0xFFFFFFFF);
+        drawHorizontalLine(var5 + 10, progress + var5 + 10, var6 + 30, 0xFF000000);
+
+        info.remove(2);
 
         this.theGame.fontRenderer.drawSplitString(String.valueOf(info), var5 + 30, var6 + 7, 120, -1);
 

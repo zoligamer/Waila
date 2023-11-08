@@ -32,11 +32,9 @@ public class WailaAddon extends BTWAddon {
 
     public String getModName(ItemStack itemStack) {
         if(itemStack != null) {
-            String name = itemStack.getItem().getItemDisplayName(itemStack);
-            if(Objects.equals(name, "")) name = itemStack.getItemName();
-            return name;
+            return itemStack.getItem().getItemDisplayName(itemStack);
         }
-        else return "BTW";
+        else return "";
     }
 
     private void load() {

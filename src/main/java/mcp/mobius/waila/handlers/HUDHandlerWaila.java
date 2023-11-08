@@ -1,7 +1,9 @@
 package mcp.mobius.waila.handlers;
 
 import btw.community.waila.WailaAddon;
+import net.fabricmc.waila.api.BreakingProgress;
 import net.fabricmc.waila.api.ItemInfo;
+import net.minecraft.client.Minecraft;
 import net.minecraft.src.World;
 import net.minecraft.src.MovingObjectPosition;
 
@@ -19,11 +21,7 @@ public class HUDHandlerWaila implements IHighlightHandler {
 
 
     public List<String> handleTextData(ItemStack itemStack, World world, EntityPlayer player, MovingObjectPosition mop, List<String> currenttip, ItemInfo.Layout layout) {
-        if (layout == ItemInfo.Layout.FOOTER) {
-            String modName = WailaAddon.instance.getModName(itemStack);
-            if (modName != null && !modName.equals(""))
-                currenttip.add("§9§o" + modName);
-        } else if (layout == ItemInfo.Layout.HEADER && ConfigHandler.instance().getConfig("waila.showmetadata", false)) {
+        if (layout == ItemInfo.Layout.HEADER && ConfigHandler.instance().getConfig("waila.showmetadata", false)) {
 //       if (currenttip.size() == 0) {
 //         currenttip.add("< Unnamed >");
 //       } else {
@@ -35,9 +33,14 @@ public class HUDHandlerWaila implements IHighlightHandler {
                 if (blockId == 149 || blockId == 150) blockId = 404;
                 else if (blockId == 93 || blockId == 94) blockId = 356;
                 currenttip.add(String.format("%s:%s", blockId, world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ)));
+                currenttip.add(String.format(" %f ", ((BreakingProgress) Minecraft.getMinecraft().playerController).getCurrentBreakingProgress()));
             }
-
+        } else if (layout == ItemInfo.Layout.FOOTER) {
+//            String modName = WailaAddon.instance.getModName(itemStack);
+//            if (modName != null && !modName.equals(""))
+//                currenttip.add("§9§o" + modName);
         }
+
         return currenttip;
     }
 }
