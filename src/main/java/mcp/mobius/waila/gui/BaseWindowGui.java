@@ -54,7 +54,7 @@ public class BaseWindowGui extends Gui {
 
             item = Item.itemsList[itemId[0]];
 
-            info.add(0, item.getItemDisplayName(new ItemStack(item)));
+            info.add(0, item.getItemDisplayName(new ItemStack(item, 1, itemId[1])));
         }
 
         if (info.size() == 0 || theGame.isGamePaused || theGame.thePlayer.isDead ||
