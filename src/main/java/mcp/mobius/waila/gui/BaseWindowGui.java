@@ -55,9 +55,13 @@ public class BaseWindowGui extends Gui {
             item = Item.itemsList[itemId[0]];
 
             info.add(0, item.getItemDisplayName(new ItemStack(item, 1, itemId[1])));
+            if(itemId[0] == 1010 || itemId[0] == 3206 || itemId[0] == 3207 || itemId[0] == 3208)
+            {
+                itemId[1] = itemId[1] % 4;
+            }
         }
 
-        if (info.size() == 0 || theGame.isGamePaused || theGame.thePlayer.isDead ||
+        if (info.size() == 0 || theGame.objectMouseOver.entityHit != null || theGame.isGamePaused || theGame.thePlayer.isDead ||
                 theGame.thePlayer.openContainer != theGame.thePlayer.inventoryContainer ||
                 theGame.thePlayer.isPlayerSleeping()) {
             return;

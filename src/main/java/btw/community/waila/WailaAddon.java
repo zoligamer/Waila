@@ -21,7 +21,7 @@ public class WailaAddon extends BTWAddon {
     private boolean enableKeybind;
 
     public WailaAddon() {
-        super("Waila", "1.0.3 beta", "Ex");
+        super("Waila", "1.0.4 beta", "Ex");
     }
 
     @Override
