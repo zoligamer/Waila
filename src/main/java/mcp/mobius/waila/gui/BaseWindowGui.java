@@ -54,6 +54,11 @@ public class BaseWindowGui extends Gui {
 
             item = Item.itemsList[itemId[0]];
 
+            if(item instanceof ItemSlab)
+            {
+                itemId[1] = itemId[1] % 4;
+            }
+
             info.add(0, item.getItemDisplayName(new ItemStack(item, 1, itemId[1])));
             if(itemId[0] == 1010 || itemId[0] == 3206 || itemId[0] == 3207 || itemId[0] == 3208)
             {
