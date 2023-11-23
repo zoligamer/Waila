@@ -57,26 +57,26 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
             float growthValue = blockID == netherStalkID? metadata / 3.0F * 100F: (metadata & 7) / 7.0F * 100.0F;
 
             if (growthValue != 100.0D) {
-                currenttip.add(String.format("Growth : %.0f %%", growthValue));
+                currenttip.add(String.format("Growth: %.0f %%", growthValue));
             } else {
-                if(blockID == wheatCropID || blockID == hempCropID) currenttip.add("Growth : Upward");
-                else currenttip.add("Growth : Mature");
+                if(blockID == wheatCropID || blockID == hempCropID) currenttip.add("Growth: Upward");
+                else currenttip.add("Growth: Mature");
             }
             return currenttip;
         }
 
         if (WailaAddon.showLeverState && blockID == leverID) {
             String redstoneOn = ((accessor.getMetadata() & 0x8) == 0) ? "Off" : "On";
-            currenttip.add("State : " + redstoneOn);
+            currenttip.add("State: " + redstoneOn);
             return currenttip;
         }
 
         if (WailaAddon.showRepeater && (blockID == repeaterIdle || blockID == repeaterActv)) {
             int tick = (accessor.getMetadata() >> 2) + 1;
             if (tick == 1) {
-                currenttip.add(String.format("Delay : %s tick", tick));
+                currenttip.add(String.format("Delay: %s tick", tick));
             } else {
-                currenttip.add(String.format("Delay : %s ticks", tick));
+                currenttip.add(String.format("Delay: %s ticks", tick));
             }
             return currenttip;
         }
@@ -84,18 +84,18 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
         if (WailaAddon.showComparator && (blockID == comparatorIdl || blockID == comparatorAct)) {
             String mode = ((accessor.getMetadata() >> 2 & 0x1) == 0) ? "Comparator" : "Subtractor";
 
-            currenttip.add("Mode : " + mode);
+            currenttip.add("Mode: " + mode);
 
             return currenttip;
         }
 
         if (WailaAddon.showRedstone && blockID == redstone) {
-            currenttip.add(String.format("Power : %s", accessor.getMetadata()));
+            currenttip.add(String.format("Power: %s", accessor.getMetadata()));
             return currenttip;
         }
 
         if (WailaAddon.showSpawnerType && blockID == mobSpawnerID && accessor.getTileEntity() instanceof TileEntityMobSpawner) {
-            currenttip.add(String.format("Type : %s", ((TileEntityMobSpawner) accessor.getTileEntity()).func_98049_a().getEntityNameToSpawn()));
+            currenttip.add(String.format("Type: %s", ((TileEntityMobSpawner) accessor.getTileEntity()).func_98049_a().getEntityNameToSpawn()));
         }
 
         return currenttip;

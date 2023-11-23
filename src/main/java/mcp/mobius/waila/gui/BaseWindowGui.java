@@ -92,22 +92,18 @@ public class BaseWindowGui extends Gui {
         int lineHeight = var6 + 25;
         int len = 0;
         if(info.size() >= 4) len = info.get(3).replaceAll("[^:]", "").length();
-        if(len > 2 && !this.theGame.fontRenderer.getUnicodeFlag()) lineHeight += ((len - 1) / 2 * 10);
+        if(len > 1 && !this.theGame.fontRenderer.getUnicodeFlag()) lineHeight += (len / 2 * 10);
 
         if (!WailaAddon.backgroundTransparency) {
-            drawBackgroundBox(var5 + 5, var6 + 5, var5 + 140, lineHeight, 0XFF100010, 0XFF5000ff, 0XFF28007f);
+            drawBackgroundBox(var5 + 5, var6 + 5, var5 + 155, lineHeight, 0XFF100010, 0XFF5000ff, 0XFF28007f);
         }
-
-        //drawRect(var5 + 6, var6 + 3, var5 + 160, var6 + 10 + lineHeight, 0xFF3F1996);
-        //drawRect(var5 + 8, var6 + 5, var5 + 150, var6 + lineHeight, 0xFF3A314C);
-
 
         drawHorizontalLine(var5 + 10, var5 + 110, lineHeight, 0xFFFFFFFF);
         drawHorizontalLine(var5 + 10, progress + var5 + 10, lineHeight, 0xFF000000);
 
         info.remove(2);
 
-        this.theGame.fontRenderer.drawSplitString(String.join(", ", info), var5 + 25, var6 + 7, 120, 0X50A0A0A0);
+        this.theGame.fontRenderer.drawSplitString(String.join(", ", info), var5 + 30, var6 + 7, 130, 0X50A0A0A0);
 
         RenderHelper.enableGUIStandardItemLighting();
         GL11.glDisable(GL11.GL_LIGHTING);
