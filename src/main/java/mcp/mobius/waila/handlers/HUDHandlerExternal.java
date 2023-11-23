@@ -1,12 +1,15 @@
 package mcp.mobius.waila.handlers;
 
+import btw.community.waila.WailaAddon;
 import mcp.mobius.waila.WailaExceptionHandler;
 import mcp.mobius.waila.addons.ConfigHandler;
 import mcp.mobius.waila.addons.ExternalModulesHandler;
 import mcp.mobius.waila.api.IWailaBlock;
 import mcp.mobius.waila.api.IWailaDataProvider;
+import mcp.mobius.waila.network.Packet0x01TERequest;
 import net.fabricmc.waila.api.IHighlightHandler;
 import net.fabricmc.waila.api.ItemInfo;
+import net.fabricmc.waila.api.PacketDispatcher;
 import net.minecraft.src.*;
 
 import java.util.List;
@@ -48,27 +51,27 @@ public class HUDHandlerExternal implements IHighlightHandler {
         Block block = accessor.getBlock();
         int blockID = accessor.getBlockID();
 
-//     if (accessor.getTileEntity() != null && WailaAddon.instance.serverPresent && System.currentTimeMillis() - accessor.timeLastUpdate >= 250L) {
-//       accessor.timeLastUpdate = System.currentTimeMillis();
-//       PacketDispatcher.sendPacketToServer(Packet0x01TERequest.create(world, mop));
-//     }
-//
-//     if (block instanceof IWailaBlock) {
-//       TileEntity entity = world.getBlockTileEntity(mop.blockX, mop.blockY, mop.blockZ);
-//       if (layout == ItemInfo.Layout.HEADER)
-//         try {
-//           return ((IWailaBlock)block).getWailaHead(itemStack, currenttip, accessor, ConfigHandler.instance());
-//         } catch (Throwable e) {
-//           return WailaExceptionHandler.handleErr(e, block.getClass().toString(), currenttip);
-//         }
-//       if (layout == ItemInfo.Layout.BODY) {
-//         try {
-//           return ((IWailaBlock)block).getWailaBody(itemStack, currenttip, accessor, ConfigHandler.instance());
-//         } catch (Throwable e) {
-//           return WailaExceptionHandler.handleErr(e, block.getClass().toString(), currenttip);
-//         }
-//       }
-//     }
+        if (accessor.getTileEntity() != null && WailaAddon.instance.serverPresent && System.currentTimeMillis() - accessor.timeLastUpdate >= 250L) {
+            accessor.timeLastUpdate = System.currentTimeMillis();
+            PacketDispatcher.sendPacketToServer(Packet0x01TERequest.create(world, mop));
+        }
+
+        if (block instanceof IWailaBlock) {
+            TileEntity entity = world.getBlockTileEntity(mop.blockX, mop.blockY, mop.blockZ);
+            if (layout == ItemInfo.Layout.HEADER)
+                try {
+                    return ((IWailaBlock) block).getWailaHead(itemStack, currenttip, accessor, ConfigHandler.instance());
+                } catch (Throwable e) {
+                    return WailaExceptionHandler.handleErr(e, block.getClass().toString(), currenttip);
+                }
+            if (layout == ItemInfo.Layout.BODY) {
+                try {
+                    return ((IWailaBlock) block).getWailaBody(itemStack, currenttip, accessor, ConfigHandler.instance());
+                } catch (Throwable e) {
+                    return WailaExceptionHandler.handleErr(e, block.getClass().toString(), currenttip);
+                }
+            }
+        }
 
         if (layout == ItemInfo.Layout.HEADER && ExternalModulesHandler.instance().hasHeadProviders(blockID)) {
             for (IWailaDataProvider dataProvider : ExternalModulesHandler.instance().getHeadProviders(blockID)) {

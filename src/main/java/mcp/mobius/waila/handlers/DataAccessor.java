@@ -5,6 +5,7 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 
 
 public class DataAccessor implements IWailaDataAccessor {
+
     public World world;
     public EntityPlayer player;
     public MovingObjectPosition mop;
@@ -72,7 +73,7 @@ public class DataAccessor implements IWailaDataAccessor {
             return this.remoteNbt;
         }
         NBTTagCompound tag = new NBTTagCompound();
-        this.entity.readFromNBT(tag);
+        this.entity.writeToNBT(tag);
         return tag;
     }
 

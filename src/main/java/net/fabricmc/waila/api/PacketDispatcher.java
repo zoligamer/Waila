@@ -23,12 +23,9 @@ public class PacketDispatcher
         Minecraft.getMinecraft().getNetHandler().addToSendQueue(packet);
     }
 
-    public static void sendPacketToPlayer(Packet packet, Player player)
+    public static void sendPacketToPlayer(Packet packet, EntityPlayerMP player)
     {
-        if (player instanceof EntityPlayerMP)
-        {
-            ((EntityPlayerMP)player).playerNetServerHandler.sendPacket(packet);
-        }
+        player.playerNetServerHandler.sendPacket(packet);
     }
 
     public static void sendPacketToAllAround(double X, double Y, double Z, double range, int dimensionId, Packet packet)

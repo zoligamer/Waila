@@ -1,5 +1,6 @@
 package net.fabricmc.waila.api;
 
+import net.minecraft.src.EntityPlayerMP;
 import net.minecraft.src.INetworkManager;
 import net.minecraft.src.Packet250CustomPayload;
 
@@ -11,5 +12,5 @@ public interface IPacketHandler
      * @param packet The packet itself
      * @param player A dummy interface representing the player - it can be cast into a real player instance if needed
      */
-    public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player);
+    public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, EntityPlayerMP player);
 }

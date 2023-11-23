@@ -1,6 +1,7 @@
 package mcp.mobius.waila;
 
 import mcp.mobius.waila.addons.ExternalModulesHandler;
+import mcp.mobius.waila.addons.btw.HUDHandlerBtw;
 import mcp.mobius.waila.addons.vanillamc.HUDHandlerVanilla;
 import mcp.mobius.waila.handlers.HUDHandlerExternal;
 import mcp.mobius.waila.handlers.HUDHandlerWaila;
@@ -30,6 +31,7 @@ public class ProxyClient extends ProxyServer {
 
     public void registerMods() {
         HUDHandlerVanilla.register();
+        HUDHandlerBtw.register();
     }
 
 }
