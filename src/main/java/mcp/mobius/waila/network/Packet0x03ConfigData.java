@@ -1,6 +1,5 @@
 package mcp.mobius.waila.network;
 
-import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.Packet250CustomPayload;
 
 import java.io.*;

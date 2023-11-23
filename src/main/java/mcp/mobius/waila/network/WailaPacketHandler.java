@@ -49,7 +49,7 @@ public class WailaPacketHandler {
                     MinecraftServer server = MinecraftServer.getServer();
                     TileEntity entity = server.worldServers[castedPacket.worldID].getBlockTileEntity(castedPacket.posX, castedPacket.posY, castedPacket.posZ);
 
-                    if (entity != null) {
+                    if (entity instanceof OvenTileEntity || entity instanceof CampfireTileEntity) {
                         if (!WailaAddon.showOvenBlock && entity instanceof OvenTileEntity) return;
                         else if (!WailaAddon.showCampfire && entity instanceof CampfireTileEntity) return;
                         try {

@@ -83,7 +83,7 @@ public class WailaAddon extends BTWAddon {
             wailaPacketHandler = new WailaPacketHandler();
         }
         wailaPacketHandler.handleCustomPacket(handler, packet);
-        return true;
+        return false;
     }
 
     public void serverPlayerConnectionInitialized(NetServerHandler serverHandler, EntityPlayerMP playerMP) {
@@ -106,7 +106,7 @@ public class WailaAddon extends BTWAddon {
             wailaPacketHandler = new WailaPacketHandler();
         }
         wailaPacketHandler.handleCustomPacket(packet);
-        return true;
+        return false;
     }
 
     @Override

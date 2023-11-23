@@ -47,7 +47,7 @@ public class HUDHandlerBtw implements IWailaDataProvider {
         if (WailaAddon.showOvenBlock && (blockID == burningOven || blockID == idleOven)
                 && accessor.getTileEntity() instanceof OvenTileEntity && WailaAddon.instance.serverPresent)
         {
-            NBTTagCompound tag  = accessor.getNBTData();
+            NBTTagCompound tag = accessor.getNBTData();
 
             int remainingCookingTime = 0;
 
