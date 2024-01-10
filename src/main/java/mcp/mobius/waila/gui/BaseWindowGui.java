@@ -5,6 +5,7 @@ import btw.item.items.PlaceAsBlockItem;
 import com.prupe.mcpatcher.mal.block.RenderBlocksUtils;
 import net.fabricmc.waila.api.ItemInfo;
 import net.minecraft.client.Minecraft;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.*;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -114,6 +115,7 @@ public class BaseWindowGui extends Gui {
         if (renderItem == null) {
             renderItem = new RenderItem();
         }
+
         renderItem.renderItemIntoGUI(this.theGame.fontRenderer, this.theGame.renderEngine, new ItemStack(item, 1, itemId[1]), var5 + 8, var6 + 8);
         GL11.glDisable(GL11.GL_LIGHTING);
         // GL11.glDepthMask(true);

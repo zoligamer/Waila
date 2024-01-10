@@ -125,6 +125,7 @@ public class WailaAddon extends BTWAddon {
         this.registerProperty("showRedstone", "True", "Show redstone power(only client)");
         this.registerProperty("showOvenBlock", "True", "Show ovenblock state(client and server)");
         this.registerProperty("showCampfire", "True", "Show campfire state(client and server)");
+        this.registerProperty("showOreChunkStorage", "True", "");
         this.registerProperty("keyBind", "35", "To enable or disable the GUI's keys, please fill in the values of the LWJGL keycode table, please refer to https://minecraft.fandom.com/wiki/Key_codes#Keyboard_codes(only client)");
         this.registerProperty("backgroundTransparency", "False", "Set the GUI background transparent,no background drawn(only client)");
     }
@@ -139,6 +140,7 @@ public class WailaAddon extends BTWAddon {
         showRedstone = Boolean.parseBoolean(propertyValues.get("showRedstone"));
         showOvenBlock = Boolean.parseBoolean(propertyValues.get("showOvenBlock"));
         showCampfire = Boolean.parseBoolean(propertyValues.get("showCampfire"));
+        showOreChunkStorage = Boolean.parseBoolean(propertyValues.get("showOreChunkStorage"));
         keyBind = Integer.parseInt(propertyValues.get("keyBind"));
         backgroundTransparency = Boolean.parseBoolean(propertyValues.get("backgroundTransparency"));
     }
@@ -151,6 +153,7 @@ public class WailaAddon extends BTWAddon {
     public static boolean showRedstone;
     public static boolean showOvenBlock;
     public static boolean showCampfire;
+    public static boolean showOreChunkStorage;
     public static int keyBind;
     public static boolean backgroundTransparency;
 }

@@ -45,17 +45,6 @@ public class ExternalModulesHandler implements IWailaRegistrar {
         return instance;
     }
 
-
-    public void addConfig(String modname, String key, String configname) {
-        ConfigHandler.instance().addConfig(modname, key, configname);
-    }
-
-
-    public void addConfigRemote(String modname, String key, String configname) {
-        ConfigHandler.instance().addConfigServer(modname, key, configname);
-    }
-
-
     public void registerHeadProvider(IWailaDataProvider dataProvider, int blockID) {
         if (!this.headProviders.containsKey(blockID))
             this.headProviders.put(blockID, new ArrayList<>());

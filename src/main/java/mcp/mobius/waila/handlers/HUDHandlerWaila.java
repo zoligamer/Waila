@@ -1,6 +1,5 @@
 package mcp.mobius.waila.handlers;
 
-import btw.community.waila.WailaAddon;
 import net.fabricmc.waila.api.BreakingProgress;
 import net.fabricmc.waila.api.ItemInfo;
 import net.minecraft.client.Minecraft;
@@ -9,7 +8,6 @@ import net.minecraft.src.MovingObjectPosition;
 
 import java.util.List;
 
-import mcp.mobius.waila.addons.ConfigHandler;
 import net.fabricmc.waila.api.IHighlightHandler;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
@@ -21,7 +19,7 @@ public class HUDHandlerWaila implements IHighlightHandler {
 
 
     public List<String> handleTextData(ItemStack itemStack, World world, EntityPlayer player, MovingObjectPosition mop, List<String> currenttip, ItemInfo.Layout layout) {
-        if (layout == ItemInfo.Layout.HEADER && ConfigHandler.instance().getConfig("waila.showmetadata", false)) {
+        if (layout == ItemInfo.Layout.HEADER) {
 //       if (currenttip.size() == 0) {
 //         currenttip.add("< Unnamed >");
 //       } else {

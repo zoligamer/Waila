@@ -7,7 +7,6 @@ import btw.block.tileentity.OvenTileEntity;
 import btw.community.waila.WailaAddon;
 import btw.item.BTWItems;
 import mcp.mobius.waila.addons.ExternalModulesHandler;
-import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import net.minecraft.src.FurnaceRecipes;
@@ -27,20 +26,22 @@ public class HUDHandlerBtw implements IWailaDataProvider {
     static int smallCampfire = BTWBlocks.smallCampfire.blockID;
     static int mediumCampfire = BTWBlocks.mediumCampfire.blockID;
     static int largeCampfire = BTWBlocks.largeCampfire.blockID;
+    static int goldOreChunkStorage = BTWBlocks.goldOreChunkStorage.blockID;
+    static int ironOreChunkStorage = BTWBlocks.ironOreChunkStorage.blockID;
 
     @Override
-    public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
+    public ItemStack getWailaStack(IWailaDataAccessor accessor) {
         return null;
     }
 
     @Override
-    public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+    public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor) {
         int blockID = accessor.getBlockID();
         return currenttip;
     }
 
     @Override
-    public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
+    public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor)
     {
         int blockID = accessor.getBlockID();
 
@@ -79,6 +80,13 @@ public class HUDHandlerBtw implements IWailaDataProvider {
                             tag.getCompoundTag("fcCookStack").getShort("id") != BTWItems.burnedMeat.itemID)?
                             (TIME_TO_BURN_FOOD - tag.getInteger("fcCookBurning")) / 20: "null"));
         }
+
+        if (WailaAddon.showOreChunkStorage && (blockID == ironOreChunkStorage || blockID == goldOreChunkStorage))
+        {
+            String mode = String.valueOf(accessor.getMetadata());
+
+            currenttip.add("Mode: " + mode);
+        }
         return currenttip;
     }
 
@@ -89,5 +97,7 @@ public class HUDHandlerBtw implements IWailaDataProvider {
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(), smallCampfire);
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(), mediumCampfire);
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(), largeCampfire);
+        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(), ironOreChunkStorage);
+        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(), goldOreChunkStorage);
     }
 }

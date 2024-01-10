@@ -34,18 +34,18 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
     static int redstone = Block.redstoneWire.blockID;
 
 
-    public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
+    public ItemStack getWailaStack(IWailaDataAccessor accessor) {
         return null;
     }
 
 
-    public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+    public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor) {
         int blockID = accessor.getBlockID();
         return currenttip;
     }
 
 
-    public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+    public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor) {
         int blockID = accessor.getBlockID();
 
         if (WailaAddon.showGrowthValue && (Block.blocksList[blockID] instanceof CropsBlock ||

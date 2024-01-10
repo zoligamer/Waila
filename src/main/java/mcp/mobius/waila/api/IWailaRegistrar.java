@@ -1,9 +1,6 @@
 package mcp.mobius.waila.api;
 
 public interface IWailaRegistrar {
-    void addConfig(String paramString1, String paramString2, String paramString3);
-
-    void addConfigRemote(String paramString1, String paramString2, String paramString3);
 
     void registerHeadProvider(IWailaDataProvider paramIWailaDataProvider, int paramInt);
 

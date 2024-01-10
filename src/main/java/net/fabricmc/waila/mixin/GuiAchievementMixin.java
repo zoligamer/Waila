@@ -1,7 +1,6 @@
 package net.fabricmc.waila.mixin;
 
 import btw.community.waila.WailaAddon;
-import mcp.mobius.waila.gui.BaseWindowGui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.GuiAchievement;
 import org.spongepowered.asm.mixin.Mixin;
