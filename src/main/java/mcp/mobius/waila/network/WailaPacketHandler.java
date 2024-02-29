@@ -49,9 +49,10 @@ public class WailaPacketHandler {
                     MinecraftServer server = MinecraftServer.getServer();
                     TileEntity entity = server.worldServers[castedPacket.worldID].getBlockTileEntity(castedPacket.posX, castedPacket.posY, castedPacket.posZ);
 
-                    if (entity instanceof OvenTileEntity || entity instanceof CampfireTileEntity) {
+                    if (entity instanceof OvenTileEntity || entity instanceof CampfireTileEntity || entity instanceof TileEntitySkull) {
                         if (!WailaAddon.showOvenBlock && entity instanceof OvenTileEntity) return;
                         else if (!WailaAddon.showCampfire && entity instanceof CampfireTileEntity) return;
+                        else if (!WailaAddon.showSkull && entity instanceof TileEntitySkull) return;
                         try {
                             NBTTagCompound tag = new NBTTagCompound();
                             entity.writeToNBT(tag);

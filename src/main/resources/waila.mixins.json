@@ -3,9 +3,12 @@
   "minVersion": "0.8",
   "package": "net.fabricmc.waila.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [],
+  "mixins": [
+    "NetServerHandlerMixin"
+  ],
   "client": [
     "GuiAchievementMixin",
+    "GuiEditSignMixin",
     "PlayerControllerMPMixin"
   ],
   "injectors": {

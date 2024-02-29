@@ -26,8 +26,6 @@ public class HUDHandlerBtw implements IWailaDataProvider {
     static int smallCampfire = BTWBlocks.smallCampfire.blockID;
     static int mediumCampfire = BTWBlocks.mediumCampfire.blockID;
     static int largeCampfire = BTWBlocks.largeCampfire.blockID;
-    static int goldOreChunkStorage = BTWBlocks.goldOreChunkStorage.blockID;
-    static int ironOreChunkStorage = BTWBlocks.ironOreChunkStorage.blockID;
 
     @Override
     public ItemStack getWailaStack(IWailaDataAccessor accessor) {
@@ -80,13 +78,6 @@ public class HUDHandlerBtw implements IWailaDataProvider {
                             tag.getCompoundTag("fcCookStack").getShort("id") != BTWItems.burnedMeat.itemID)?
                             (TIME_TO_BURN_FOOD - tag.getInteger("fcCookBurning")) / 20: "null"));
         }
-
-        if (WailaAddon.showOreChunkStorage && (blockID == ironOreChunkStorage || blockID == goldOreChunkStorage))
-        {
-            String mode = String.valueOf(accessor.getMetadata());
-
-            currenttip.add("Mode: " + mode);
-        }
         return currenttip;
     }
 
@@ -97,7 +88,5 @@ public class HUDHandlerBtw implements IWailaDataProvider {
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(), smallCampfire);
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(), mediumCampfire);
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(), largeCampfire);
-        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(), ironOreChunkStorage);
-        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(), goldOreChunkStorage);
     }
 }

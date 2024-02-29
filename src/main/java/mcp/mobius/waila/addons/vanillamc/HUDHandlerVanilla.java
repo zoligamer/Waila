@@ -6,11 +6,13 @@ import btw.block.blocks.CropsBlock;
 import btw.block.tileentity.CampfireTileEntity;
 import btw.block.tileentity.OvenTileEntity;
 import btw.community.waila.WailaAddon;
+import btw.entity.mob.SkeletonEntity;
 import btw.item.BTWItems;
 import mcp.mobius.waila.addons.ExternalModulesHandler;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.*;
 
 import java.util.List;
@@ -32,6 +34,8 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
     static int comparatorIdl = Block.redstoneComparatorIdle.blockID;
     static int comparatorAct = Block.redstoneComparatorActive.blockID;
     static int redstone = Block.redstoneWire.blockID;
+
+    static int skull = Block.skull.blockID;
 
 
     public ItemStack getWailaStack(IWailaDataAccessor accessor) {
@@ -98,6 +102,42 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
             currenttip.add(String.format("Type: %s", ((TileEntityMobSpawner) accessor.getTileEntity()).func_98049_a().getEntityNameToSpawn()));
         }
 
+        if(WailaAddon.showSkull && blockID == skull && accessor.getTileEntity() instanceof TileEntitySkull && WailaAddon.instance.serverPresent) {
+            NBTTagCompound tag = accessor.getNBTData();
+            byte type = tag.getByte("SkullType");
+            String skull = "";
+
+            switch (type)
+            {
+                case 0:
+                default:
+                    skull = StatCollector.translateToLocal("item.skull.skeleton.name");
+                    break;
+
+                case 1:
+                    skull = StatCollector.translateToLocal("item.skull.wither.name");
+                    break;
+
+                case 2:
+                    skull = StatCollector.translateToLocal("item.skull.zombie.name");
+                    break;
+
+                case 3:
+                    skull = String.format(StatCollector.translateToLocal("item.skull.player.name"),
+                            tag.getString("ExtraType"));
+                    break;
+
+                case 4:
+                    skull = StatCollector.translateToLocal("item.skull.creeper.name");
+                    break;
+
+                case 5:
+                    skull = StatCollector.translateToLocal("entity.enderman.name");
+                    break;
+            }
+            currenttip.add(skull);
+        }
+
         return currenttip;
     }
 
@@ -118,6 +158,7 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), comparatorAct);
         // ExternalModulesHandler.instance().registerHeadProvider(new HUDHandlerVanilla(), redstone);
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), redstone);
+        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerVanilla(), skull);
 
         ExternalModulesHandler.instance().registerDocTextFile("D:/BTW/Test/src/java/mcp/mobius/waila/addons/vanillamc/WikiData.csv");
     }

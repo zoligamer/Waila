@@ -123,6 +123,7 @@ public class WailaAddon extends BTWAddon {
         this.registerProperty("showRepeater", "True", "Show repeater delay(only client)");
         this.registerProperty("showComparator", "True", "Show comparator mode(only client)");
         this.registerProperty("showRedstone", "True", "Show redstone power(only client)");
+        this.registerProperty("showSkull", "True", "Show skull info(client and server)");
         this.registerProperty("showOvenBlock", "True", "Show ovenblock state(client and server)");
         this.registerProperty("showCampfire", "True", "Show campfire state(client and server)");
         this.registerProperty("showOreChunkStorage", "True", "");
@@ -138,6 +139,7 @@ public class WailaAddon extends BTWAddon {
         showRepeater = Boolean.parseBoolean(propertyValues.get("showRepeater"));
         showComparator = Boolean.parseBoolean(propertyValues.get("showComparator"));
         showRedstone = Boolean.parseBoolean(propertyValues.get("showRedstone"));
+        showSkull = Boolean.parseBoolean(propertyValues.get("showSkull"));
         showOvenBlock = Boolean.parseBoolean(propertyValues.get("showOvenBlock"));
         showCampfire = Boolean.parseBoolean(propertyValues.get("showCampfire"));
         showOreChunkStorage = Boolean.parseBoolean(propertyValues.get("showOreChunkStorage"));
@@ -151,6 +153,8 @@ public class WailaAddon extends BTWAddon {
     public static boolean showRepeater;
     public static boolean showComparator;
     public static boolean showRedstone;
+
+    public static boolean showSkull;
     public static boolean showOvenBlock;
     public static boolean showCampfire;
     public static boolean showOreChunkStorage;
