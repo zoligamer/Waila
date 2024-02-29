@@ -132,7 +132,7 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
                     break;
 
                 case 5:
-                    skull = StatCollector.translateToLocal("entity.enderman.name");
+                    skull = StatCollector.translateToLocal("item.skull.infused.name");
                     break;
             }
             currenttip.add(skull);

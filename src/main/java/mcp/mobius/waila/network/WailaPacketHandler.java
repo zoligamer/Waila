@@ -3,6 +3,7 @@ package mcp.mobius.waila.network;
 import btw.AddonHandler;
 import btw.BTWAddon;
 import btw.block.tileentity.CampfireTileEntity;
+import btw.block.tileentity.FiniteTorchTileEntity;
 import btw.block.tileentity.OvenTileEntity;
 import btw.community.waila.WailaAddon;
 import mcp.mobius.waila.WailaExceptionHandler;
@@ -49,10 +50,12 @@ public class WailaPacketHandler {
                     MinecraftServer server = MinecraftServer.getServer();
                     TileEntity entity = server.worldServers[castedPacket.worldID].getBlockTileEntity(castedPacket.posX, castedPacket.posY, castedPacket.posZ);
 
-                    if (entity instanceof OvenTileEntity || entity instanceof CampfireTileEntity || entity instanceof TileEntitySkull) {
+                    if (entity instanceof OvenTileEntity || entity instanceof CampfireTileEntity ||
+                            entity instanceof TileEntitySkull || entity instanceof FiniteTorchTileEntity) {
                         if (!WailaAddon.showOvenBlock && entity instanceof OvenTileEntity) return;
                         else if (!WailaAddon.showCampfire && entity instanceof CampfireTileEntity) return;
                         else if (!WailaAddon.showSkull && entity instanceof TileEntitySkull) return;
+                        else if (!WailaAddon.showFiniteTorch && entity instanceof FiniteTorchTileEntity) return;
                         try {
                             NBTTagCompound tag = new NBTTagCompound();
                             entity.writeToNBT(tag);

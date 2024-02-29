@@ -116,19 +116,19 @@ public class WailaAddon extends BTWAddon {
     }
 
     private void registerConfigProperties() {
-
-        this.registerProperty("showSpawnerType", "True", "Show mobspawner types(only client)");
-        this.registerProperty("showGrowthValue", "True", "Show growth value(only client)");
-        this.registerProperty("showLeverState", "True", "Show lever state(only client)");
-        this.registerProperty("showRepeater", "True", "Show repeater delay(only client)");
-        this.registerProperty("showComparator", "True", "Show comparator mode(only client)");
-        this.registerProperty("showRedstone", "True", "Show redstone power(only client)");
-        this.registerProperty("showSkull", "True", "Show skull info(client and server)");
-        this.registerProperty("showOvenBlock", "True", "Show ovenblock state(client and server)");
-        this.registerProperty("showCampfire", "True", "Show campfire state(client and server)");
-        this.registerProperty("showOreChunkStorage", "True", "");
+        this.registerProperty("showSpawnerType", "True", "+ for both server and client enabled, - for client only\n" +
+                "[-]Show mobspawner types");
+        this.registerProperty("showGrowthValue", "True", "[-]Show growth value");
+        this.registerProperty("showLeverState", "True", "[-]Show lever state");
+        this.registerProperty("showRepeater", "True", "[-]Show repeater delay");
+        this.registerProperty("showComparator", "True", "[-]Show comparator mode");
+        this.registerProperty("showRedstone", "True", "[-]Show redstone power");
+        this.registerProperty("showSkull", "True", "[+]Show skull info");
+        this.registerProperty("showOvenBlock", "True", "[+]Show ovenblock state");
+        this.registerProperty("showCampfire", "True", "[+]Show campfire state");
+        this.registerProperty("showFiniteTorch", "True", "[+]Show finitetorch state");
         this.registerProperty("keyBind", "35", "To enable or disable the GUI's keys, please fill in the values of the LWJGL keycode table, please refer to https://minecraft.fandom.com/wiki/Key_codes#Keyboard_codes(only client)");
-        this.registerProperty("backgroundTransparency", "False", "Set the GUI background transparent,no background drawn(only client)");
+        this.registerProperty("backgroundTransparency", "False", "[-]Set the GUI background transparent,no background drawn");
     }
 
     @Override
@@ -138,11 +138,11 @@ public class WailaAddon extends BTWAddon {
         showLeverState = Boolean.parseBoolean(propertyValues.get("showLeverState"));
         showRepeater = Boolean.parseBoolean(propertyValues.get("showRepeater"));
         showComparator = Boolean.parseBoolean(propertyValues.get("showComparator"));
+        showFiniteTorch = Boolean.parseBoolean(propertyValues.get("showFiniteTorch"));
         showRedstone = Boolean.parseBoolean(propertyValues.get("showRedstone"));
         showSkull = Boolean.parseBoolean(propertyValues.get("showSkull"));
         showOvenBlock = Boolean.parseBoolean(propertyValues.get("showOvenBlock"));
         showCampfire = Boolean.parseBoolean(propertyValues.get("showCampfire"));
-        showOreChunkStorage = Boolean.parseBoolean(propertyValues.get("showOreChunkStorage"));
         keyBind = Integer.parseInt(propertyValues.get("keyBind"));
         backgroundTransparency = Boolean.parseBoolean(propertyValues.get("backgroundTransparency"));
     }
@@ -157,7 +157,8 @@ public class WailaAddon extends BTWAddon {
     public static boolean showSkull;
     public static boolean showOvenBlock;
     public static boolean showCampfire;
-    public static boolean showOreChunkStorage;
+    public static boolean showFiniteTorch;
+
     public static int keyBind;
     public static boolean backgroundTransparency;
 }

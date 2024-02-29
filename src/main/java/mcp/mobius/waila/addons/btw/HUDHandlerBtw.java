@@ -3,6 +3,7 @@ package mcp.mobius.waila.addons.btw;
 import btw.block.BTWBlocks;
 import btw.block.blocks.CampfireBlock;
 import btw.block.tileentity.CampfireTileEntity;
+import btw.block.tileentity.FiniteTorchTileEntity;
 import btw.block.tileentity.OvenTileEntity;
 import btw.community.waila.WailaAddon;
 import btw.item.BTWItems;
@@ -26,6 +27,8 @@ public class HUDHandlerBtw implements IWailaDataProvider {
     static int smallCampfire = BTWBlocks.smallCampfire.blockID;
     static int mediumCampfire = BTWBlocks.mediumCampfire.blockID;
     static int largeCampfire = BTWBlocks.largeCampfire.blockID;
+
+    static int finiteTorch = BTWBlocks.finiteBurningTorch.blockID;
 
     @Override
     public ItemStack getWailaStack(IWailaDataAccessor accessor) {
@@ -78,6 +81,14 @@ public class HUDHandlerBtw implements IWailaDataProvider {
                             tag.getCompoundTag("fcCookStack").getShort("id") != BTWItems.burnedMeat.itemID)?
                             (TIME_TO_BURN_FOOD - tag.getInteger("fcCookBurning")) / 20: "null"));
         }
+
+        if (WailaAddon.showFiniteTorch && blockID == finiteTorch && accessor.getTileEntity() instanceof FiniteTorchTileEntity)
+        {
+            NBTTagCompound tag = accessor.getNBTData();
+            int time = tag.getInteger("fcBurnCounter");
+            currenttip.add(String.format("Time: %s", time / 20));
+        }
+
         return currenttip;
     }
 
@@ -88,5 +99,6 @@ public class HUDHandlerBtw implements IWailaDataProvider {
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(), smallCampfire);
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(), mediumCampfire);
         ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(), largeCampfire);
+        ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBtw(),  finiteTorch);
     }
 }
