@@ -88,7 +88,7 @@ public class BaseWindowGui extends Gui {
         GL11.glDisable(GL11.GL_LIGHTING);
 //        this.drawTexturedModalRect(var5, var6, 96, 202 + 100, 160 + 100, 32 + 10);
 
-        int progress = (int)(Float.parseFloat(info.get(2)) * 100F);
+        int progress = (int)(Float.parseFloat(((String)info.get(2)).replace(",", ".")) * 100.0F);
 
         int lineHeight = var6 + 25;
         int len = 0;
